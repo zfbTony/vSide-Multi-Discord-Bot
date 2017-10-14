@@ -77,6 +77,16 @@ vside.on("message", async message => {
     return;
 });
 
+
+bob.on("message", (message) => require("./events/bob.js")(bob, message))
+
+
+
+
+
+
+
+
 function evalCmd(message, code) {
     if(message.author.id !== config.owner) return;
     try {
