@@ -13,7 +13,7 @@
   "author": "Tony (zfbTony)",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^11.2.1"
+    "discord.js": "github:hydrabolt/discord.js"
   },
   "repository": {
     "type": "git",

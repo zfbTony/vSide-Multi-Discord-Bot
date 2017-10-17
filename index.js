@@ -45,27 +45,27 @@ const susp = new Discord.Client({ //Random servers
 
 
 vside.on("ready", () => {
-    vside.user.setGame('vSide');
+    vside.user.setActivity('vSide');
     console.log(`vSide bots are online!\n${vside.users.size} users found.`);
 });
 bob.on("ready", () => {
-    bob.user.setGame('vSide');
+    bob.user.setActivity('vSide');
     //console.log(`Bob is online.`);
 });
 mann.on("ready", () => {
-    mann.user.setGame('vSide');
+    mann.user.setActivity('vSide');
     //console.log(`MannequinOfTheNight is online.`);
 });
 miah.on("ready", () => {
-    miah.user.setGame('vSide');
+    miah.user.setActivity('vSide');
     //console.log(`Miah is online.`);
 });
 nene.on("ready", () => {
-    nene.user.setGame('vSide');
+    nene.user.setActivity('vSide');
     //console.log(`Nene is online.`);
 });
 susp.on("ready", () => {
-    susp.user.setGame('vSide');
+    susp.user.setActivity('vSide');
     //console.log(`SuspiciousMan is online.`);
 });
 
@@ -74,8 +74,8 @@ vside.on("message", async message => {
     if(message.author.bot || message.system) return;
     if(message.channel.type === 'dm') { return; } 
 
-    if (message.content.indexOf(config.prefix) === 0) {
-        let args = message.content.slice(config.prefix.length).split(" ");
+    if (message.content.indexOf(config.vsidep) === 0) {
+        let args = message.content.slice(config.vsidep.length).split(" ");
         let cmd = args[0].toLowerCase();
         args.shift();
 
@@ -121,7 +121,45 @@ bob.on("message", async message => {
     return;
 });
 
+nene.on("message", async message => { 
+    if(message.author.bot || message.system) return;
+    if(message.channel.type === 'dm') { return; } 
 
+    if (message.content.indexOf(config.nenep) === 0) {
+        let args = message.content.slice(config.nenep.length).split(" ");
+        let cmd = args[0].toLowerCase();
+        args.shift();
+
+        if (cmd === 'info' && message.author.id === config.owner) {
+            
+            let embed = new Discord.MessageEmbed()
+            .setColor(0x2ecc71)
+            .setAuthor("**Congratz on joining vSide!**")
+            .setDescription(`*Not affiliated with vSide.com or ExitReality*\n
+I'm Nene. I can quickly show you the ropes.\n
+First off, to become an official vSider, DM <@142831624868855808> and they'll help you out. You'll need to prove your vSide identity however, just a heads up!`)
+            .addField("**House Rules**", `
+Be nice
+Be respectful
+Have fun
+**Don't** be hatin'
+            `)
+            .addField("Ready to Party?", "Head over to #nv to introduce yourself.")
+            //.setThumbnail(profile.picture)
+            .setFooter("-Love Nene");
+            return message.channel.send(embed);
+
+
+
+            return; 
+        }
+
+        return;
+    } else if (message.content.indexOf("<@"+nene.user.id) === 0 || message.content.indexOf("<@!"+nene.user.id) === 0) {
+        return;// message.channel.send(`Use \`${config.prefix}\` to interact with me.`);
+    }
+    return;
+});
 
 
 
@@ -144,8 +182,15 @@ function clean(text) {
     text = text
         .replace(/`/g, '`' + String.fromCharCode(8203))
         .replace(/@/g, '@' + String.fromCharCode(8203))
-        .replace(config.token, 'mfa.VkO_2G4Qv3T--NO--lWetW_tjND--TOKEN--QFTm6YGtzq9PH--4U--tG0') //Don't let it post your token
-    return text;
+        .replace(config.vside, 'mfa.VkO_2G4Qv3T--NO--lWetW_tjND--TOKEN--QFTm6YGtzq9PH--4U--tG0') //Don't let it post your token
+        .replace(config.bob, 'mfa.VkO_2G4Qv3T--NO--lWetW_tjND--TOKEN--QFTm6YGtzq9PH--4U--tG0')
+        .replace(config.man, 'mfa.VkO_2G4Qv3T--NO--lWetW_tjND--TOKEN--QFTm6YGtzq9PH--4U--tG0')
+        .replace(config.miah, 'mfa.VkO_2G4Qv3T--NO--lWetW_tjND--TOKEN--QFTm6YGtzq9PH--4U--tG0')
+        .replace(config.nene, 'mfa.VkO_2G4Qv3T--NO--lWetW_tjND--TOKEN--QFTm6YGtzq9PH--4U--tG0')
+        .replace(config.susp, 'mfa.VkO_2G4Qv3T--NO--lWetW_tjND--TOKEN--QFTm6YGtzq9PH--4U--tG0')
+    
+    
+        return text;
 }
 
 // Catch Errors before they crash the app.
